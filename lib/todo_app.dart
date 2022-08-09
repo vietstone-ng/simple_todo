@@ -7,6 +7,8 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomePage();
+    return const MaterialApp(
+      home: HomePage(),
+    );
   }
 }
