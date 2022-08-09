@@ -4,5 +4,5 @@ class Task {
   final String title;
   final bool completed;
 
-  Task(this.id, this.title, this.completed);
+  const Task(this.id, this.title, this.completed);
 }

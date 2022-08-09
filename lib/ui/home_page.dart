@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:simple_todo/domain/todos_service.dart';
 import 'package:simple_todo/ui/todos_list_view.dart';
-import 'package:simple_todo/ui/view_models/all_view_model.dart';
 import 'package:simple_todo/ui/view_models/complete_view_model.dart';
 import 'package:simple_todo/ui/view_models/incomplete_view_model.dart';
+import 'package:simple_todo/ui/view_models/todos_view_model.dart';
 
 // The HomePage layouts 3 screens with a bottom navigation bar, and provides Create task UI.
 // TODO: layout
@@ -16,6 +17,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
+  // TODO: move to outside
+  final todosService = TodosService();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -64,18 +68,18 @@ class _HomePageState extends State<HomePage> {
       ),
       body: IndexedStack(
         index: _selectedIndex,
-        children: const [
+        children: [
           TodosListView(
-            key: Key('all-list'),
-            viewModel: AllViewModel(),
+            key: const Key('all-list'),
+            viewModel: TodosViewModel(service: todosService),
           ),
           TodosListView(
-            key: Key('complete-list'),
-            viewModel: CompleteViewModel(),
+            key: const Key('complete-list'),
+            viewModel: CompleteViewModel(service: todosService),
           ),
           TodosListView(
-            key: Key('incomplete-list'),
-            viewModel: IncompleteViewModel(),
+            key: const Key('incomplete-list'),
+            viewModel: IncompleteViewModel(service: todosService),
           ),
         ],
       ),

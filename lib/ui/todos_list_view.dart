@@ -2,6 +2,7 @@
 // TODO: layout list view
 // TODO: inject model as dependencies
 import 'package:flutter/material.dart';
+import 'package:simple_todo/models/task.dart';
 import 'package:simple_todo/ui/view_models/todos_view_model.dart';
 
 class TodosListView extends StatelessWidget {
@@ -9,10 +10,32 @@ class TodosListView extends StatelessWidget {
 
   final TodosViewModel viewModel;
 
+  Widget _buildListView(List<Task> todos) {
+    return ListView.separated(
+      itemCount: todos.length,
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      itemBuilder: (BuildContext context, int index) {
+        return ListTile(
+          title: Text(todos[index].title),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: viewModel.color,
+    return StreamBuilder<List<Task>>(
+      stream: viewModel.dataStream,
+      builder: (context, snapshot) {
+        final todos = snapshot.data;
+        if (todos == null) {
+          return const Center(child: Text('Loading ...'));
+        } else if (todos.isEmpty) {
+          return const Center(child: Text('No task'));
+        }
+
+        return _buildListView(todos);
+      },
     );
   }
 }

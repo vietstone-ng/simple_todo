@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:simple_todo/models/task.dart';
 import 'package:simple_todo/ui/view_models/todos_view_model.dart';
 
 // ViewModel for Complete screen. This extracts only completed todos from TodosService.
-class CompleteViewModel implements TodosViewModel {
-  const CompleteViewModel();
+class CompleteViewModel extends TodosViewModel {
+  const CompleteViewModel({required super.service});
 
   @override
-  Color get color => Colors.greenAccent;
+  Stream<List<Task>> get dataStream => super.dataStream.map(
+        (list) => list.where((e) => e.completed).toList(),
+      );
 }
