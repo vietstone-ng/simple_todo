@@ -10,9 +10,12 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return Provider<TodosService>(
       create: (_) => TodosService(storage: TodosLocalStorage()),
-      child: const MaterialApp(home: HomePage()),
+      dispose: (_, service) => service.dispose(),
+      child: const MaterialApp(
+        home: HomePage(),
+      ),
     );
   }
 }
