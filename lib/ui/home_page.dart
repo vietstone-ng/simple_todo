@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_todo/data/todos_local_storage.dart';
 import 'package:simple_todo/domain/todos_service.dart';
 import 'package:simple_todo/ui/todos_list_view.dart';
 import 'package:simple_todo/ui/view_models/complete_view_model.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   // TODO: move to outside
-  final todosService = TodosService();
+  final todosService = TodosService(storage: TodosLocalStorage());
 
   void _onItemTapped(int index) {
     setState(() {

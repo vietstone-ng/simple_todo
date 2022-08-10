@@ -23,9 +23,12 @@ class Task {
 
   @override
   bool operator ==(other) {
-    return (other is Task) && other.id == id;
+    return (other is Task) &&
+        other.id == id &&
+        other.title == title &&
+        other.completed == completed;
   }
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode => Object.hash(id, title, completed);
 }

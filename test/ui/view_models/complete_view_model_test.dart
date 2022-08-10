@@ -16,12 +16,11 @@ class MockTodosService extends Mock implements TodosService {}
 void main() {
   group('Test ViewModel for All screen', () {
     final mockService = MockTodosService();
-    when(() => mockService.todosStream)
-        .thenAnswer((_) => Stream.value(testData));
-
     final vm = CompleteViewModel(service: mockService);
 
     test('return completed todos', () {
+      when(() => mockService.todosStream)
+          .thenAnswer((_) => Stream.value(testData));
       expect(vm.dataStream, emits(testData.where((e) => e.completed).toList()));
     });
   });
