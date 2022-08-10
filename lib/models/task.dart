@@ -6,7 +6,7 @@ class Task {
   final String title;
   final bool completed;
 
-  Task({required this.title, required this.completed}) : id = const Uuid().v4();
+  Task({required this.title, this.completed = false}) : id = const Uuid().v4();
 
   Task._({required this.id, required this.title, required this.completed});
 

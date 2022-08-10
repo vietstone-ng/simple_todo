@@ -1,9 +1,7 @@
 // Layout the todos list view
-// TODO: layout list view
-// TODO: inject model as dependencies
 import 'package:flutter/material.dart';
 import 'package:simple_todo/models/task.dart';
-import 'package:simple_todo/ui/view_models/todos_view_model.dart';
+import 'package:simple_todo/ui/todos_list_view/view_models/todos_view_model.dart';
 
 class TodosListView extends StatelessWidget {
   const TodosListView({Key? key, required this.viewModel}) : super(key: key);
@@ -26,11 +24,13 @@ class TodosListView extends StatelessWidget {
                   viewModel.completeTask(task);
                 }
               },
-              child: Icon(
-                task.completed
+              child: Container(
+                width: 50,
+                height: 50,
+                alignment: Alignment.center,
+                child: Icon(task.completed
                     ? Icons.check_box
-                    : Icons.check_box_outline_blank,
-                size: 50,
+                    : Icons.check_box_outline_blank),
               )),
         );
       },

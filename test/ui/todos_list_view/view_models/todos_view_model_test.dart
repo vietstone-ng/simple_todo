@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
 import 'package:simple_todo/domain/todos_service.dart';
 import 'package:simple_todo/models/task.dart';
-import 'package:simple_todo/ui/view_models/todos_view_model.dart';
+import 'package:simple_todo/ui/todos_list_view/view_models/todos_view_model.dart';
 import 'package:test/test.dart';
 
 final testData = [

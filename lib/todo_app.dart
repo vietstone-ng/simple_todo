@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_todo/data/todos_local_storage.dart';
+import 'package:simple_todo/domain/todos_service.dart';
 import 'package:simple_todo/ui/home_page.dart';
 
 // Configure servies for the app.
@@ -7,8 +10,9 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return Provider(
+      create: (_) => TodosService(storage: TodosLocalStorage()),
+      child: const MaterialApp(home: HomePage()),
     );
   }
 }
