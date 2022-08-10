@@ -1,19 +1,18 @@
 // Local storage
+import 'package:hive/hive.dart';
+import 'package:simple_todo/constants.dart';
 import 'package:simple_todo/models/task.dart';
 
 class TodosLocalStorage {
+  final _hiveBox = Hive.box(kHiveTodosBoxName);
+
   void dispose() {}
 
   Future<List<Task>?> loadTodos() async {
-    // TODO: mock
-    return [
-      Task(title: 'Test 1', completed: true),
-      Task(title: 'Test 2', completed: false),
-      Task(title: 'Test 3', completed: false),
-    ];
+    return _hiveBox.get(kHiveTodosStoreKey).cast<Task>();
   }
 
   Future<void> saveTodos(List<Task> todos) async {
-    // TODO
+    await _hiveBox.put(kHiveTodosStoreKey, todos);
   }
 }

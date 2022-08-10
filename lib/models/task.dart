@@ -6,15 +6,17 @@ class Task {
   final String title;
   final bool completed;
 
-  Task({required this.title, this.completed = false}) : id = const Uuid().v4();
-
-  Task._({required this.id, required this.title, required this.completed});
+  Task({
+    String? id,
+    required this.title,
+    this.completed = false,
+  }) : id = id ?? const Uuid().v4();
 
   Task copyWith({
     String? title,
     bool? completed,
   }) {
-    return Task._(
+    return Task(
       id: id,
       title: title ?? this.title,
       completed: completed ?? this.completed,

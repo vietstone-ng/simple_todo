@@ -15,6 +15,8 @@ dependencies:
   rxdart: ^0.27.5
   uuid: ^3.0.6
   provider: ^6.0.3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
