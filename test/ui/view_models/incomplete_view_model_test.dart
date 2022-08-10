@@ -4,11 +4,11 @@ import 'package:simple_todo/models/task.dart';
 import 'package:simple_todo/ui/view_models/incomplete_view_model.dart';
 import 'package:test/test.dart';
 
-const testData = [
-  Task('1', 'Title 1', false),
-  Task('2', 'Title 2', true),
-  Task('3', 'Title 3', true),
-  Task('4', 'Title 4', false),
+final testData = [
+  Task(title: 'Title 1', completed: false),
+  Task(title: 'Title 2', completed: true),
+  Task(title: 'Title 3', completed: true),
+  Task(title: 'Title 4', completed: false),
 ];
 
 class MockTodosService extends Mock implements TodosService {}

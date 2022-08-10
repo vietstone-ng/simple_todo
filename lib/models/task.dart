@@ -1,8 +1,31 @@
-// Describe the entity of todos.
+import 'package:uuid/uuid.dart';
+
+// Describe the entity of a todo task.
 class Task {
   final String id;
   final String title;
   final bool completed;
 
-  const Task(this.id, this.title, this.completed);
+  Task({required this.title, required this.completed}) : id = const Uuid().v4();
+
+  Task._({required this.id, required this.title, required this.completed});
+
+  Task copyWith({
+    String? title,
+    bool? completed,
+  }) {
+    return Task._(
+      id: id,
+      title: title ?? this.title,
+      completed: completed ?? this.completed,
+    );
+  }
+
+  @override
+  bool operator ==(other) {
+    return (other is Task) && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }

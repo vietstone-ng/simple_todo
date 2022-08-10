@@ -15,8 +15,23 @@ class TodosListView extends StatelessWidget {
       itemCount: todos.length,
       separatorBuilder: (BuildContext context, int index) => const Divider(),
       itemBuilder: (BuildContext context, int index) {
+        final task = todos[index];
         return ListTile(
-          title: Text(todos[index].title),
+          title: Text(task.title),
+          leading: InkWell(
+              onTap: () {
+                if (task.completed) {
+                  viewModel.uncompleteTask(task);
+                } else {
+                  viewModel.completeTask(task);
+                }
+              },
+              child: Icon(
+                task.completed
+                    ? Icons.check_box
+                    : Icons.check_box_outline_blank,
+                size: 50,
+              )),
         );
       },
     );

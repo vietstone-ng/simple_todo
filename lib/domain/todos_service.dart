@@ -11,8 +11,8 @@ class TodosService {
   TodosService() {
     // TODO: mock data
     _subject.add([
-      const Task('123', 'Test 1', true),
-      const Task('456', 'Test 2', false),
+      Task(title: 'Test 1', completed: true),
+      Task(title: 'Test 2', completed: false),
     ]);
   }
 
