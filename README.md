@@ -1,16 +1,38 @@
-# simple_todo
+# Simple Todo
 
-A new Flutter project.
+This project demonstrates the usage of layered architecture and writing tests.
+
+## Screenshot:
+
+| ![screenshot_1.png](readme_files/screenshot_1.png) | ![screenshot_2.png](readme_files/screenshot_2.png) | ![screenshot_3.png](readme_files/screenshot_3.png) | ![screenshot_4.png](readme_files/screenshot_4.png) |
+| --- | --- | --- | --- |
+
+## Features:
+- Create/delete task
+- Complete/uncomplete task
+
+## Architecture:
+![screenshot_1.png](readme_files/architecture.png)&nbsp;
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Fetch the dependencies:
+```
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+Run:
+```
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Test:
+```
+flutter test
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<br>
+<br>
+Thank you!
+
