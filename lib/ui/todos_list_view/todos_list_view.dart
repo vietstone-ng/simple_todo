@@ -11,27 +11,33 @@ class TodosListView extends StatelessWidget {
   Widget _buildListView(List<Task> todos) {
     return ListView.separated(
       itemCount: todos.length,
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      separatorBuilder: (BuildContext context, int index) =>
+          const Divider(height: 1.0),
       itemBuilder: (BuildContext context, int index) {
         final task = todos[index];
-        return ListTile(
-          title: Text(task.title),
-          leading: InkWell(
-              onTap: () {
-                if (task.completed) {
-                  viewModel.uncompleteTask(task);
-                } else {
-                  viewModel.completeTask(task);
-                }
-              },
-              child: Container(
-                width: 50,
-                height: 50,
-                alignment: Alignment.center,
-                child: Icon(task.completed
-                    ? Icons.check_box
-                    : Icons.check_box_outline_blank),
-              )),
+        return Dismissible(
+          key: ValueKey(task),
+          onDismissed: (_) => viewModel.removeTask(task),
+          background: Container(color: Colors.red),
+          child: ListTile(
+            title: Text(task.title),
+            leading: InkWell(
+                onTap: () {
+                  if (task.completed) {
+                    viewModel.uncompleteTask(task);
+                  } else {
+                    viewModel.completeTask(task);
+                  }
+                },
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: Icon(task.completed
+                      ? Icons.check_box
+                      : Icons.check_box_outline_blank),
+                )),
+          ),
         );
       },
     );

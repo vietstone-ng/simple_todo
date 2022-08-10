@@ -12,4 +12,6 @@ class TodosViewModel {
   void completeTask(Task t) => _service.completeTask(t);
 
   void uncompleteTask(Task t) => _service.uncompleteTask(t);
+
+  void removeTask(Task t) => _service.removeTask(t);
 }
