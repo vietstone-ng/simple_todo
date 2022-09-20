@@ -9,7 +9,7 @@ class TodosLocalStorage {
   void dispose() {}
 
   Future<List<Task>?> loadTodos() async {
-    return _hiveBox.get(kHiveTodosStoreKey).cast<Task>();
+    return _hiveBox.get(kHiveTodosStoreKey, defaultValue: []).cast<Task>();
   }
 
   Future<void> saveTodos(List<Task> todos) async {
